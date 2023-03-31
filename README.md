@@ -34,3 +34,55 @@
  We can parse this document by creating a parser object, and then calling the parse() method on the parser object. The parse() method takes a string as an argument, and returns a tree object. The tree object contains the data from the XML document in a tree-like structure. The XML document can be considered a string, because it is a text file.
 
 # Example code in Python.
+```python
+from xmlparser import XMLParser
+
+parser = XMLParser()
+tree = parser.parse("<root><child><grandchild>Some text</grandchild></child><child><grandchild>Some more text</grandchild></child></root>")
+```
+# How to access the data in the tree?
+ Step 1. Get the root node.
+```python
+root = tree.root
+print(root.tag) # Prints "root"
+```
+ Step 2. Get the child nodes.
+```python
+children = root.children
+print(children[0].tag) # Prints "child"
+print(children[1].tag) # Prints "child"
+```
+ Step 3. Get the grandchild nodes.
+```python
+grandchildren = children[0].children
+print(grandchildren[0].tag) # Prints "grandchild"
+```
+ Step 4. Get the data from the grandchild nodes.
+```python
+print(grandchildren[0].data) # Prints "Some text"
+```
+# How to access the data in the tree using a path?
+ Step 1. Provide the path to the data.
+```python
+path = "root.child.grandchild"
+```
+ Step 2. Get the data from the tree.
+```python
+data = tree.get(path)
+print(data) # Prints "Some text"
+```
+# How to access the data in the tree using a path and an index?
+ Step 1. Provide the path to the data.
+```python
+path = "root.child.grandchild"
+```
+ Step 2. Provide the index of the data.
+```python
+index = 1
+```
+ Step 3. Get the data from the tree.
+```python
+data = tree.get(path, index)
+print(data) # Prints "Some more text"
+```
+
