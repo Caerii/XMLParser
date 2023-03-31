@@ -73,20 +73,7 @@ print(xml)
 ```
 
 # Output
-The tree:  root soup  2 children   child bruh  1 children     grandchild I AM HIDDEN!!!  0 children   child  1 children     grandchild Parse my XML you fool, I dare you.  0 children
-The root tag:  root
-The root text:  soup
-The root children:  [child bruh  1 children   grandchild I AM HIDDEN!!!  0 children, child  1 children   grandchild Parse my XML you fool, I dare you.  0 children]
-The root attributes:  {}
-The root children's tags:  ['child', 'child']
-The root children's text:  ['bruh', None]
-The root children's children:  [[grandchild I AM HIDDEN!!!  0 children], [grandchild Parse my XML you fool, I dare you.  0 children]]
-The root children's attributes:  [{}, {}]
-The root children's children's tags:  [['grandchild'], ['grandchild']]
-The root children's children's text:  [['I AM HIDDEN!!!'], ['Parse my XML you fool, I dare you.']]
-The root children's children's children:  [[[]], [[]]]
-<root>       <child>^dreamed: i slept decently, but not for long enough; my last interview is at 13'o wish me luck!!!!</child>    <child>                    ^idea: basically a microformat (<https://microformats.org/>)</child>    <child>                    ^conversational: a way of compressing entire "conversational round subtrees" into single messages, in the way zero-knowledge proofs do</child>    <child>                    *[-3,-2] isn't it cool how dreams can give us cool ideas????</child>    <child>                    # still experimenting with the notation, trying to chose a delimiter pair that is available but not already interpreted is quite challenging when trying to write CROSS-PLATFORM PLAINTEXT (hm ) 「this is actually他和reason i共同啊“Chinese”keyboard」𝚪∞</child>    <child>                    *{-3,-1} although dream conversations  can be hard to remember... which seems to be fine, i guess. grm has been reporting some of the funny stuff i say in my 
-sleep. my dreams are usually quite animated, externally.</child>    <child>                    *{-2,-1} do u understand the format by now?</child>    <child>                    # ur turn to play a round :3</child>    <child>                </child></root>
-PS F:\Github\XMLParser>
+![image](https://user-images.githubusercontent.com/67016155/229185614-95e9b8ed-1958-4166-9ed9-b3ef25eae92b.png)
+
 
 
