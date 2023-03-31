@@ -41,48 +41,52 @@ parser = XMLParser()
 tree = parser.parse("<root><child><grandchild>Some text</grandchild></child><child><grandchild>Some more text</grandchild></child></root>")
 ```
 # How to access the data in the tree?
- Step 1. Get the root node.
+
 ```python
-root = tree.root
-print(root.tag) # Prints "root"
+parser = XMLParser()
+root = parser.parse("<root>I am the root text.<child>bruh<grandchild>I AM HIDDEN!!!</grandchild></child>soup<child><grandchild>Parse my XML you fool, I dare you.</grandchild></child></root>")
+print("The tree: ",root)
+print("The root tag: ",root.tag)
+print("The root text: ",root.text)
+print("The root children: ",root.children)
+print("The root attributes: ",root.attributes)
+print("The root children's tags: ",[child.tag for child in root.children])
+print("The root children's text: ",[child.text for child in root.children])
+print("The root children's children: ",[child.children for child in root.children])
+print("The root children's attributes: ",[child.attributes for child in root.children])
+print("The root children's children's tags: ",[[grandchild.tag for grandchild in child.children] for child in root.children])
+print("The root children's children's text: ",[[grandchild.text for grandchild in child.children] for child in root.children])
+print("The root children's children's children: ",[[grandchild.children for grandchild in child.children] for child in root.children])
+
+# convert a string into XML
+example_string = """^dreamed: i slept decently, but not for long enough; my last interview is at 13'o wish me luck!!!!
+                    ^idea: basically a microformat (<https://microformats.org/>)
+                    ^conversational: a way of compressing entire "conversational round subtrees" into single messages, in the way zero-knowledge proofs do
+                    *[-3,-2] isn't it cool how dreams can give us cool ideas????
+                    # still experimenting with the notation, trying to chose a delimiter pair that is available but not already interpreted is quite challenging when trying to write CROSS-PLATFORM PLAINTEXT (hm ) 「this is actually他和reason i共同啊“Chinese”keyboard」𝚪∞
+                    *{-3,-1} although dream conversations can be hard to remember... which seems to be fine, i guess. grm has been reporting some of the funny stuff i say in my sleep. my dreams are usually quite animated, externally.
+                    *{-2,-1} do u understand the format by now?
+                    # ur turn to play a round :3
+                """
+xml = stringToXML(example_string).toXML()
+print(xml)
 ```
- Step 2. Get the child nodes.
-```python
-children = root.children
-print(children[0].tag) # Prints "child"
-print(children[1].tag) # Prints "child"
-```
- Step 3. Get the grandchild nodes.
-```python
-grandchildren = children[0].children
-print(grandchildren[0].tag) # Prints "grandchild"
-```
- Step 4. Get the data from the grandchild nodes.
-```python
-print(grandchildren[0].data) # Prints "Some text"
-```
-# How to access the data in the tree using a path?
- Step 1. Provide the path to the data.
-```python
-path = "root.child.grandchild"
-```
- Step 2. Get the data from the tree.
-```python
-data = tree.get(path)
-print(data) # Prints "Some text"
-```
-# How to access the data in the tree using a path and an index?
- Step 1. Provide the path to the data.
-```python
-path = "root.child.grandchild"
-```
- Step 2. Provide the index of the data.
-```python
-index = 1
-```
- Step 3. Get the data from the tree.
-```python
-data = tree.get(path, index)
-print(data) # Prints "Some more text"
-```
+
+# Output
+The tree:  root soup  2 children   child bruh  1 children     grandchild I AM HIDDEN!!!  0 children   child  1 children     grandchild Parse my XML you fool, I dare you.  0 children
+The root tag:  root
+The root text:  soup
+The root children:  [child bruh  1 children   grandchild I AM HIDDEN!!!  0 children, child  1 children   grandchild Parse my XML you fool, I dare you.  0 children]
+The root attributes:  {}
+The root children's tags:  ['child', 'child']
+The root children's text:  ['bruh', None]
+The root children's children:  [[grandchild I AM HIDDEN!!!  0 children], [grandchild Parse my XML you fool, I dare you.  0 children]]
+The root children's attributes:  [{}, {}]
+The root children's children's tags:  [['grandchild'], ['grandchild']]
+The root children's children's text:  [['I AM HIDDEN!!!'], ['Parse my XML you fool, I dare you.']]
+The root children's children's children:  [[[]], [[]]]
+<root>       <child>^dreamed: i slept decently, but not for long enough; my last interview is at 13'o wish me luck!!!!</child>    <child>                    ^idea: basically a microformat (<https://microformats.org/>)</child>    <child>                    ^conversational: a way of compressing entire "conversational round subtrees" into single messages, in the way zero-knowledge proofs do</child>    <child>                    *[-3,-2] isn't it cool how dreams can give us cool ideas????</child>    <child>                    # still experimenting with the notation, trying to chose a delimiter pair that is available but not already interpreted is quite challenging when trying to write CROSS-PLATFORM PLAINTEXT (hm ) 「this is actually他和reason i共同啊“Chinese”keyboard」𝚪∞</child>    <child>                    *{-3,-1} although dream conversations  can be hard to remember... which seems to be fine, i guess. grm has been reporting some of the funny stuff i say in my 
+sleep. my dreams are usually quite animated, externally.</child>    <child>                    *{-2,-1} do u understand the format by now?</child>    <child>                    # ur turn to play a round :3</child>    <child>                </child></root>
+PS F:\Github\XMLParser>
+
 
