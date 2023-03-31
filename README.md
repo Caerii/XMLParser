@@ -1,5 +1,5 @@
 # XMLParser
- Simple Parser for XML documents
+ Simple Parser for XML documents.
 
 # What is an XML document?
  An XML document is a text file that contains a hierarchical structure of data. The data is organized in a tree-like structure, with each node containing a tag and some data. The tag is used to identify the type of data that is contained in the node. The data can be text, numbers, or other tags. The tags can be nested to create a tree-like structure. Data is stored in the nodes, and the nodes are stored in the tree.
@@ -30,3 +30,7 @@
     </child>
 </root>
 ```
+# How do we parse this?
+ We can parse this document by creating a parser object, and then calling the parse() method on the parser object. The parse() method takes a string as an argument, and returns a tree object. The tree object contains the data from the XML document in a tree-like structure. The XML document can be considered a string, because it is a text file.
+
+# Example code in Python.
